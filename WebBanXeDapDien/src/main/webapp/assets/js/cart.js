@@ -147,6 +147,7 @@ jQuery(document).ready(function () {
             success: function (data) {
                 if (data == true) {
                     alert("Đã thêm hóa đơn thành công")
+                    window.location = "/";
                 } else {
 
                     alert("Thêm hóa đơn thất bại ")

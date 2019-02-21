@@ -74,12 +74,12 @@
         ec-transport"></i>Track Your Order</a></li>
         <li class="menu-item animate-dropdown"><a title="Shop" href="shop.html"><i class="ec
         ec-shopping-bag"></i>Shop</a></li>
-        <li class="menu-item animate-dropdown"><a title="My Account" href=/login"><i class="ec ec-user"></i>
+        <li class="menu-item animate-dropdown"><a title="My Account" href="/login"><i class="ec ec-user"></i>
         <c:if test="${not empty pageContext.request.userPrincipal}">
             <c:out value="${pageContext.request.userPrincipal.name}"/>
         </c:if>
         <c:if test="${ pageContext.request.userPrincipal == null}">
-            <c:out value="${'LOGIN'}"/>
+            <c:out value="${'Login'}"/>
         </c:if>
 
         </a></li>

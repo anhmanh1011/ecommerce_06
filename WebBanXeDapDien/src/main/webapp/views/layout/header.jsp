@@ -68,7 +68,7 @@
         <form class="navbar-search" method="post" action="/products/search">
         <label class="sr-only screen-reader-text" for="search">Search for:</label>
         <div class="input-group">
-        <input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="name"
+        <input type="text" id="search" class="form-control search-field" dir="ltr" value="${key}" name="name"
         placeholder="Search
         for products" />
         <div class="input-group-addon search-categories">

@@ -33,7 +33,7 @@
                                                                                                             name="billing_first_name"
                                                                                                             class="input-text ">
                                     </p>
-                                    <p id="billing_phone_field" class="form-row form-row form-row-last validate-required validate-phone"><label class="" for="billing_phone">Phone <abbr title="required" class="required">*</abbr></label><input type="tel" value="" placeholder="" id="billing_phone" name="billing_phone" class="input-text "></p><div class="clear"></div>
+                                    <p id="billing_phone_field" class="form-row form-row form-row-last validate-required validate-phone"><label class="" for="billing_phone">Phone <abbr title="required" class="required">*</abbr></label><input type="tel" value="${account.phoneNumber}" placeholder="" id="billing_phone" name="billing_phone"  class="input-text "></p><div class="clear"></div>
                                     <p id="billing_address_1_field" class="form-row form-row form-row-wide address-field validate-required"><label class="" for="billing_address">Address <abbr title="required" class="required">*</abbr></label><input type="text" value="" placeholder="Street address" id="billing_address" name="billing_address_1" class="input-text "></p>
 
                                     <div class="clear"></div>

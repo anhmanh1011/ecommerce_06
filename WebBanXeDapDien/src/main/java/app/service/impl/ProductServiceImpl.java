@@ -1,7 +1,7 @@
 package app.service.impl;
 
-import app.bean.Product;
 import app.Utils.ObjectMapperUtils;
+import app.bean.Product;
 import app.bean.ProductDetail;
 import app.model.ProductDetailEntity;
 import app.model.ProductEntity;
@@ -43,7 +43,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
             }).collect(Collectors.toList());
             return products;
         } catch (Exception e) {
-            logger.error(e.getMessage());
+           e.printStackTrace();
             return null;
         }
     }
@@ -114,7 +114,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
     @Override
     public boolean saveProduct(Product product, ProductDetail productDetail) {
         try {
-            ProductEntity productEntity = productDao.getProduct(product.getId());
+            ProductEntity productEntity = productDao.findById(product.getId());
             ProductDetailEntity productDetailEntity = productDetailsDao.getProductDetailsByProductId(product.getId());
             BeanUtils.copyProperties(productEntity, product);
             SupplierEntity supplierEntity = suppilerDao.findById(product.getSupplier().getId());

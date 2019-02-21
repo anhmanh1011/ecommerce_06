@@ -12,7 +12,7 @@ public class OrderDAOImpl extends GenericDAO<Integer, OrderEntity> implements Or
 
     @Override
     public List<OrderEntity> findAll() {
-        return getSession().createQuery("From OrderEntity").getResultList();
+        return getSession().createQuery("From OrderEntity O order by O.createdAt desc").getResultList();
     }
 
     @Override

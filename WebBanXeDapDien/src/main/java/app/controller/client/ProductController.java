@@ -42,6 +42,7 @@ public class ProductController {
         model.addAttribute("products", products);
         model.addAttribute("pageCount", products.size() % 24 > 0 ? (products.size() / 24 + 1) : (products.size() / 24));
         model.addAttribute("pageNumber", 1);
+        model.addAttribute("key", name);
         return "home";
     }
 }

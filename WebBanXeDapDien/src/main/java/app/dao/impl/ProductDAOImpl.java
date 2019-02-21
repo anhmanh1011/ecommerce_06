@@ -13,12 +13,12 @@ import java.util.stream.Collectors;
 public class ProductDAOImpl extends GenericDAO<Integer, ProductEntity> implements ProductDao {
     @Override
     public List<ProductEntity> getProductList() {
-        return getSession().createQuery("from ProductEntity").getResultList();
+        return getSession().createQuery("from ProductEntity P Order By P.id desc").getResultList();
     }
 
     @Override
     public List<ProductEntity> getProductListByPage(int pageid, int total) {
-        List<ProductEntity> resultList = getSession().createQuery("from ProductEntity")
+        List<ProductEntity> resultList = getSession().createQuery("from ProductEntity P Order By P.id desc")
                 .setFirstResult((pageid - 1) * total) // offset
                 .setMaxResults(total) // limit
                 .getResultList();

@@ -1,12 +1,16 @@
 package app.service.impl;
 
+import app.Utils.ObjectMapperUtils;
+import app.bean.Account;
 import app.bean.Role;
 import app.model.AccountEntity;
 import app.model.RoleEntity;
 import app.service.AccountService;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.LockMode;
+import org.modelmapper.ModelMapper;
 import org.springframework.mail.SimpleMailMessage;
 
 import java.io.Serializable;
@@ -77,6 +81,12 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
             e.printStackTrace();
             throw e;
         }
+    }
+
+    @Override
+    public Account getAccount(String email) {
+        Account account = ObjectMapperUtils.map(accountDao.findByEmail(email), Account.class);
+        return account;
     }
 
 

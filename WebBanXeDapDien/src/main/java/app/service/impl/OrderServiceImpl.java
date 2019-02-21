@@ -2,6 +2,7 @@ package app.service.impl;
 
 import app.Utils.ObjectMapperUtils;
 import app.bean.Order;
+import app.model.AccountEntity;
 import app.model.OrderDetailEntity;
 import app.model.OrderEntity;
 import app.model.ProductEntity;
@@ -10,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.LockMode;
 
 import java.io.Serializable;
+import java.security.Principal;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +26,7 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         try {
             return orderDao.findById(key);
         } catch (Exception e) {
-            logger.error(e.getMessage());
+          e.printStackTrace();
             return null;
         }
     }
@@ -61,7 +63,12 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         try {
             order.setCreatedAt(new Timestamp(new Date().getTime()));
             order.setStatus("chưa xác nhận");
+            AccountEntity accountEntity = null;
+            if (order.getAccountByUserId() != null) {
+                accountEntity = accountDao.findByEmail(order.getAccountByUserId().getEmail());
+            }
             OrderEntity orderEntity = ObjectMapperUtils.orderEntityMap(order);
+            orderEntity.setAccountByUserId(accountEntity);
             OrderEntity orderEntity2 = orderDao.saveOrUpdate(orderEntity);
             List<OrderDetailEntity> orderDetailEntities = ObjectMapperUtils.orderDetailsEntityMap(order.getOrderDetails());
             for (int i = 0; i < orderDetailEntities.size(); i++) {
@@ -102,7 +109,7 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
             Order order = ObjectMapperUtils.orderMap(orderEntity);
             return order;
         } catch (Exception e) {
-            logger.error(e);
+          e.printStackTrace();
             return null;
         }
 
